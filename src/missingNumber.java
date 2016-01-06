@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class BestTimeBuySellStockII {
+public class missingNumber {
 	public static int maxProfit(int[] prices) {
 		int revenue = 0;
 		
