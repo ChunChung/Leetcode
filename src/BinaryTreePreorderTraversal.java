@@ -23,10 +23,13 @@ public class BinaryTreePreorderTraversal {
 		return list;
 	}
 
+	
+	
+	
 	static public void main(String argv[]) {
 		TreeNode tree = new TreeNode(1);
 		tree.right = new TreeNode(2);
 		tree.right.left = new TreeNode(3);
-		System.out.println(preorderTraversal(null).toString());
+		System.out.println(preorderTraversal(tree).toString());
 	}
 }
