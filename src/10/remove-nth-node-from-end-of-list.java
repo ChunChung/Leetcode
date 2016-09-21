@@ -17,30 +17,22 @@ public class Solution {
         ListNode fast = dummyNode;
         ListNode slow = dummyNode;
 
-        int len = length(head) - n;
-        if (len < 0) {
-            return head;
+        int len = n % length(head);
+
+        while (len > 0) {
+            fast = fast.next;
+            len --;
         }
-        else {
-            while (len > 0) {
-                fast = fast.next;
-                len --;
-            }
-            while (n >= 0) {
-                fast = fast.next;
-                slow = slow.next;
-                n--;
-            }
+        while (fast.next != null && slow != fast) {
+            fast = fast.next;
+            slow = slow.next;
         }
 
         slow.next = slow.next.next;
 
-        return head;
+        return dummyNode.next;
     }
     private int length(ListNode root) {
-        if (root == null) {
-            return 0;
-        }
         int len = 0;
         while (root != null) {
             root = root.next;
