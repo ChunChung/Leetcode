@@ -8,34 +8,26 @@
  * }
  */
 public class Solution {
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
-        }      
+	public boolean isSymmetric(TreeNode root) {
+		if (root == null) {
+			return true;
+		}
 
-        Queue leftQueue = new ArrayList();
-        Queue rightQueue = new ArrayList();
+		return dfs(root.left, root.right);
+	}
 
-        leftQueue.offer(root.left);
-        rightQueue.offer(root.right);
-        return bfs(leftQueue, rightQueue);
-    }
+	private boolean dfs(TreeNode left, TreeNode right) {
+		if (left == null && right == null) { 
+			return true; 
+		} else if ((left == null && right != null) || (left != null && right == null)) {
+			return false;
+		}   
 
-    private boolean bfs(Queue leftQueue, Queue rightQueue) {
-        if (leftQueue.size() == 0 && rightQueue.size() == 0) {
-            return true;
-        }
+		if (left.val != right.val) {
+			return false;
+		}
 
-        if (leftQueue.size() != rightQueue.size()) {
-            return false;
-        }
+		return dfs(left.left, right.right) && dfs(left.right, right.left);
+	}   
+}   
 
-        TreeNode nullNode = new TreeNode(-1);
-        int n = leftQueue.size();
-
-        while (n > 0) {
-            n--;
-        }
-        return bfs(leftQueue, rightQueue);
-    }
-}
