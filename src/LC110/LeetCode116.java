@@ -62,7 +62,9 @@ After calling your function, the tree should look like:
 
 class LeetCode116{
     public void connect(TreeLinkNode root) {
-        if(root == null) return;
+/*
+    	//Method1
+    	if(root == null) return;
         Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();            
         queue.offer(root);        
         while(queue.size() != 0){
@@ -79,6 +81,18 @@ class LeetCode116{
                 if (node.right != null) queue.offer(node.right);
                 n--;
             }
+        }
+ */       
+        //Method 2
+        if(root == null) return;
+        while(root != null && root.left != null){
+            TreeLinkNode p = root;
+            while(p != null) {
+                p.left.next = p.right;
+                p.right.next = p.next == null ? null : p.next.left;
+                p = p.next;
+            }
+            root = root.left;
         }
     }
 }
