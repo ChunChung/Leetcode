@@ -10,5 +10,3 @@ class Dog implements Animal {
 		System.out.println("Dog Walk");
 	}
 }
-
-class Cat 

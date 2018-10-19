@@ -1,4 +1,4 @@
-public class Solution {
+public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         //construct graph matrix
         int[][] matGraph = new int[numCourses][numCourses];

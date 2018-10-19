@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class SymmetricTree {
 	public boolean isSymmetric(TreeNode root) {
 		if (root == null) {
 			return true;

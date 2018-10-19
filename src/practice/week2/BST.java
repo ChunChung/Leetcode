@@ -85,7 +85,7 @@ public class BST {
 
 	}
 
-	static public void main(String[] argv) {
+	public void main(String[] argv) {
 		TreeNode head = new TreeNode(0);
 
 		return;
