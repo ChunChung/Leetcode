@@ -9,4 +9,3 @@ class LeetCode541 {
         return "";
     }
 }
-    

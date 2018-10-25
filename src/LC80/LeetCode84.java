@@ -1,9 +1,38 @@
 package LC80;
 
-class LeetCode84 {
+import java.util.Stack;
+
+public class LeetCode84 {
     public int largestRectangleArea(int[] heights) {
-        
+        Stack<Integer> stack = new Stack<Integer>();
+        int largestRectArea = Integer.MIN_VALUE;
+        stack.push(0);
+        for (int index = 0; index < heights.length; index++)
+        while (stack.size() != 0) {
+            while (!stack.empty() && heights[stack.peek()] > heights[index]) {
+                int popIndex = stack.pop();
+                largestRectArea = Math.max(largestRectArea, (index - popIndex) * heights[popIndex]);
+
+                int start = stack.isEmpty() ? -1 : stack.peek();
+                largestRectArea = Math.max(largestRectArea, heights[popIndex] * (index - start - 1));
+            }
+            stack.push(index);
+        }
+        return largestRectArea;
     }
+
+//    Stack<Integer> st = new Stack<>();
+//    int res = 0;
+//        for(int i = 0; i <= height.length; i++) {
+//        int h = i == height.length ? 0 : height[i];
+//        while(!st.isEmpty() && h < height[st.peek()]) {
+//            int index = st.pop();
+//            int start = st.isEmpty() ? -1 : st.peek();
+//            res = Math.max(res, height[index] * (i - start - 1));
+//        }
+//        st.push(i);
+//    }
+//        return res;
 }
 /**
 [84] Largest Rectangle in Histogram  
